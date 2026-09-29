@@ -1,0 +1,21 @@
+{
+  "nome": "Cenario 1",
+  "processos": {
+    "P1": [
+      {"tipo": "EXEC",    "conteudo": "inicializa estado local"},
+      {"tipo": "SEND",    "destino": "P2", "conteudo": "m1"},
+      {"tipo": "EXEC",    "conteudo": "processa em paralelo"},
+      {"tipo": "RECEIVE", "origem":  "P3", "conteudo": "m3"}
+    ],
+    "P2": [
+      {"tipo": "RECEIVE", "origem":  "P1", "conteudo": "m1"},
+      {"tipo": "EXEC",    "conteudo": "valida m1"},
+      {"tipo": "SEND",    "destino": "P3", "conteudo": "m2"}
+    ],
+    "P3": [
+      {"tipo": "EXEC",    "conteudo": "prepara buffer"},
+      {"tipo": "RECEIVE", "origem":  "P2", "conteudo": "m2"},
+      {"tipo": "SEND",    "destino": "P1", "conteudo": "m3"}
+    ]
+  }
+}

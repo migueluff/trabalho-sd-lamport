@@ -1,0 +1,21 @@
+{
+  "nome": "Cenario 2",
+  "processos": {
+    "P1": [
+      {"tipo": "EXEC", "conteudo": "tarefa local a1"},
+      {"tipo": "EXEC", "conteudo": "tarefa local a2"},
+      {"tipo": "SEND", "destino": "P2", "conteudo": "m_a"}
+    ],
+    "P2": [
+      {"tipo": "EXEC",    "conteudo": "tarefa local b1"},
+      {"tipo": "EXEC",    "conteudo": "tarefa local b2"},
+      {"tipo": "RECEIVE", "origem":  "P1", "conteudo": "m_a"},
+      {"tipo": "SEND",    "destino": "P3", "conteudo": "m_b"}
+    ],
+    "P3": [
+      {"tipo": "EXEC",    "conteudo": "tarefa local c1"},
+      {"tipo": "EXEC",    "conteudo": "tarefa local c2"},
+      {"tipo": "RECEIVE", "origem":  "P2", "conteudo": "m_b"}
+    ]
+  }
+}

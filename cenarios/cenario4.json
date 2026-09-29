@@ -1,0 +1,19 @@
+{
+  "nome": "Cenario 4",
+  "processos": {
+    "P1": [
+      {"tipo": "SEND",    "destino": "P2", "conteudo": "ping"},
+      {"tipo": "RECEIVE", "origem":  "P2", "conteudo": "pong"},
+      {"tipo": "EXEC",    "conteudo": "conclui handshake"}
+    ],
+    "P2": [
+      {"tipo": "SEND",    "destino": "P1", "conteudo": "pong"},
+      {"tipo": "RECEIVE", "origem":  "P1", "conteudo": "ping"},
+      {"tipo": "EXEC",    "conteudo": "conclui handshake"}
+    ],
+    "P3": [
+      {"tipo": "EXEC", "conteudo": "observador ocioso d1"},
+      {"tipo": "EXEC", "conteudo": "observador ocioso d2"}
+    ]
+  }
+}

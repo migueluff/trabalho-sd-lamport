@@ -1,0 +1,24 @@
+{
+  "nome": "Cenario 3",
+  "processos": {
+    "P1": [
+      {"tipo": "EXEC",    "conteudo": "le requisicao do cliente"},
+      {"tipo": "SEND",    "destino": "P2", "conteudo": "req"},
+      {"tipo": "RECEIVE", "origem":  "P2", "conteudo": "resp"},
+      {"tipo": "EXEC",    "conteudo": "consolida resposta"},
+      {"tipo": "RECEIVE", "origem":  "P3", "conteudo": "relatorio"}
+    ],
+    "P2": [
+      {"tipo": "RECEIVE", "origem":  "P1", "conteudo": "req"},
+      {"tipo": "EXEC",    "conteudo": "consulta base de dados"},
+      {"tipo": "SEND",    "destino": "P1", "conteudo": "resp"}
+    ],
+    "P3": [
+      {"tipo": "EXEC", "conteudo": "coleta metrica t1"},
+      {"tipo": "EXEC", "conteudo": "coleta metrica t2"},
+      {"tipo": "EXEC", "conteudo": "coleta metrica t3"},
+      {"tipo": "EXEC", "conteudo": "coleta metrica t4"},
+      {"tipo": "SEND", "destino": "P1", "conteudo": "relatorio"}
+    ]
+  }
+}
