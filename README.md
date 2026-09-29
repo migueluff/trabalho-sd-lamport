@@ -120,7 +120,7 @@ trabalho-lamport/
 
 ## 5. Resumo das regras implementadas
 
-Todas em `lamport/relogio.py`, para auditoria em um único lugar:
+Todas em `lamport/relogio.py`:
 
 | Regra | Quando | Efeito |
 |---|---|---|
