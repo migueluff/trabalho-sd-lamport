@@ -1,7 +1,0 @@
-# Nenhuma dependencia externa.
-#
-# O simulador usa apenas a biblioteca padrao do Python (>= 3.9):
-# threading, collections, json, argparse, dataclasses, itertools, re.
-#
-# Basta ter o Python instalado:
-#     python3 -m lamport cenarios/cenario1_basico.json
