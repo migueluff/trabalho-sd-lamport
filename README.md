@@ -43,7 +43,7 @@ python3 -m lamport cenarios/cenario1_basico.json \
 Isso imprime, em ordem:
 
 1. o **log em tempo real**, na ordem em que as threads executaram;
-2. a **ordem total** dos eventos por timestamp de Lamport, com desempate por ID do processo;
+    2. a **ordem total** dos eventos por timestamp de Lamport, com desempate por ID do processo;
 3. os relógios finais de cada processo;
 4. o diagrama espaço-tempo em SVG.
 
@@ -65,8 +65,8 @@ Isso imprime, em ordem:
 
 | Arquivo | O que demonstra |
 |---|---|
-| `cenario1_basico.json` | cadeia causal `P1 → P2 → P3 → P1`. **Cenário principal da apresentação.** |
-| `cenario2_empates.json` | vários eventos com o mesmo `L` em processos diferentes: exercita o desempate por ID |
+| `cenario1_basico.json` | cadeia causal `P1 → P2 → P3 → P1`. |
+| `cenario2_empates.json` | vários eventos com o mesmo `L` em processos diferentes |
 | `cenario3_limitacao.json` | `P3` trabalha isolado enquanto `P1`/`P2` conversam: expõe `L(a) < L(b)` sem `a → b` |
 | `cenario4_cruzado.json` | envios cruzados simultâneos; os dois `SEND` recebem o mesmo timestamp |
 
@@ -89,7 +89,7 @@ Isso imprime, em ordem:
 ```
 
 - Em um `RECEIVE`, `conteudo` é **opcional**: quando presente, funciona como
-  asserção — a simulação falha se chegar outra mensagem.
+  verificação — a simulação falha se chegar outra mensagem.
 - O cenário é validado antes de executar. Um `SEND` sem o `RECEIVE`
   correspondente é rejeitado com mensagem explícita, em vez de travar a
   simulação até o timeout.
@@ -120,7 +120,7 @@ trabalho-lamport/
 
 ## 5. Resumo das regras implementadas
 
-Todas em `lamport/relogio.py`, para auditoria em um único lugar:
+Todas em `lamport/relogio.py`:
 
 | Regra | Quando | Efeito |
 |---|---|---|
