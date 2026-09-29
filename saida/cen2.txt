@@ -1,0 +1,36 @@
+==============================================================================
+CENÁRIO: Cenario 2
+Processos: P1, P2, P3 | Eventos programados: 10
+==============================================================================
+
+LOG
+------------------------------------------------------------------------------
+[Processo P1] Evento: EXEC | Relógio Lógico: 1 | Detalhes: tarefa local a1
+[Processo P1] Evento: EXEC | Relógio Lógico: 2 | Detalhes: tarefa local a2
+[Processo P1] Evento: SEND | Relógio Lógico: 3 | Detalhes: Enviou para P2 -> 'm_a' (timestamp=3)
+[Processo P2] Evento: EXEC | Relógio Lógico: 1 | Detalhes: tarefa local b1
+[Processo P2] Evento: EXEC | Relógio Lógico: 2 | Detalhes: tarefa local b2
+[Processo P2] Evento: RECEIVE | Relógio Lógico: 4 | Detalhes: Recebeu de P1 -> 'm_a' | max(L=2, ts=3) + 1 = 4
+[Processo P2] Evento: SEND | Relógio Lógico: 5 | Detalhes: Enviou para P3 -> 'm_b' (timestamp=5)
+[Processo P3] Evento: EXEC | Relógio Lógico: 1 | Detalhes: tarefa local c1
+[Processo P3] Evento: EXEC | Relógio Lógico: 2 | Detalhes: tarefa local c2
+[Processo P3] Evento: RECEIVE | Relógio Lógico: 6 | Detalhes: Recebeu de P2 -> 'm_b' | max(L=2, ts=5) + 1 = 6
+
+==============================================================================
+ORDEM TOTAL DE EVENTOS
+==============================================================================
+  #    L  Processo  Tipo     Detalhes
+------------------------------------------------------------------------------
+  1    1  P1        EXEC     tarefa local a1
+  2    1  P2        EXEC     tarefa local b1
+  3    1  P3        EXEC     tarefa local c1
+  4    2  P1        EXEC     tarefa local a2
+  5    2  P2        EXEC     tarefa local b2
+  6    2  P3        EXEC     tarefa local c2
+  7    3  P1        SEND     Enviou para P2 -> 'm_a' (timestamp=3)
+  8    4  P2        RECEIVE  Recebeu de P1 -> 'm_a' | max(L=2, ts=3) + 1 = 4
+  9    5  P2        SEND     Enviou para P3 -> 'm_b' (timestamp=5)
+ 10    6  P3        RECEIVE  Recebeu de P2 -> 'm_b' | max(L=2, ts=5) + 1 = 6
+
+RELÓGIOS FINAIS: P1: L=3 | P2: L=5 | P3: L=6
+
